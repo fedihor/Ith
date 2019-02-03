@@ -16,7 +16,7 @@ namespace Ith.Domain.Entities
         [Display(Name = "Тема")]
         public int SubjectId { get; set; }
         [Display(Name = "Статус")]
-        public byte StateId { get; set; }
+        public int StateId { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата создания")]
         public DateTime? DateAdd { get; set; }
@@ -25,16 +25,16 @@ namespace Ith.Domain.Entities
         [Display(Name = "Пользователь")]
         public string UserId { get; set; }
 
-        [ForeignKey("StateId")]
-        public State State { get; set; }
-        [ForeignKey("SubjectId")]
-        public Subject Subject { get; set; }
+        //[ForeignKey("StateId")]
+        //public State State { get; set; }
+        //[ForeignKey("SubjectId")]
+        //public Subject Subject { get; set; }
 
-        [NotMapped]
-        public PostFeedback Feedback { get; set; }
+        //[NotMapped]
+        //public PostFeedback Feedback { get; set; }
 
-        [NotMapped]
-        public ModelParams PostParams = new ModelParams();
+        //[NotMapped]
+        //public ModelParams PostParams = new ModelParams();
 
         //public static Post GetPost(int postId, string ip, PostContext db)
         //{

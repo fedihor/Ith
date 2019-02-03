@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+
+<div class="uk-navbar-right">
+
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="uk-navbar-nav">
+                <li>
+                    @*@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Мій кабінет" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Вихід</a></li>
+            </ul>
+        }
+    }
+    else
+    {
+        <ul class="uk-navbar-nav">
+            <li>@Html.ActionLink("Реєстрація", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Вхід", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }
+
+</div>

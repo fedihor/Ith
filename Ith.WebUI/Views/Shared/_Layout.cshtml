@@ -1,57 +1,112 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>@ViewBag.Title - Адвокат Федорчук Оксана</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
+    <a id="top-scroll"></a>
+    <div class="uk-container-expand header" id="header">
 
-    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-align-center navbar-block">
+            <nav class="uk-navbar-container" uk-navbar id="menu-full">
 
-        <div class="uk-navbar-left">
-            @Html.ActionLink("Logo", "Index", "Home", new { area = "" }, new { @class = "uk-navbar-item uk-logo" })
-            <ul class="uk-navbar-nav">
-                <li class="uk-active">@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-            </ul>
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="@Url.Action("Index", "Home")"><span class="logo-first-word">Адвокат</span>&nbsp;Федорчук Оксана</a>
+                    <ul class="uk-navbar-nav">
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "uk-active" : "")">@Html.ActionLink("Головна", "Index", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "uk-active" : "")">@Html.ActionLink("Про адвоката", "About", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Price" ? "uk-active" : "")">@Html.ActionLink("Ціни", "Price", "Home")</li>
+                        <li class="@(new string[] { "ConsultRules", "ConsultRequests", "Create", "UserAccount" }.Contains(ViewContext.RouteData.Values["Action"].ToString()) ? "uk-active" : "")">
+                            @Html.ActionLink("Консультація онлайн", "ConsultRules", "Consult")
+                            <div class="uk-navbar-dropdown consult-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ConsultRules" ? "uk-active" : "")">@Html.ActionLink("Умови", "ConsultRules", "Consult")</li>
+                                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ConsultRequests" ? "uk-active" : "")">@Html.ActionLink("Запити", "ConsultRequests", "Consult")</li>
+                                    <li class="@(new string[] { "Create", "Edit" }.Contains(ViewContext.RouteData.Values["Action"].ToString()) ? "uk-active" : "")">@Html.ActionLink("Новий запит", "Create", "Consult")</li>
+                                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "UserAccount" ? "uk-active" : "")">@Html.ActionLink("Обліковий запис", "UserAccount", "Consult")</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "uk-active" : "")">@Html.ActionLink("Контакти", "Contact", "Home")</li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </nav>
+
+            <nav class="uk-navbar-container" id="menu-mobile">
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-push"></a>
+                </div>
+                <div>
+                    <a class="uk-navbar-item uk-logo" href="#"><span class="logo-first-word">Адвокат </span>&nbsp;Федорчук Оксана</a>
+                </div>
+            </nav>
+
+            <div id="offcanvas-push" uk-offcanvas="mode: push; flip: false; overlay: false">
+                <div class="uk-offcanvas-bar">
+                    <button class="uk-offcanvas-close" type="button" uk-close></button>
+                    <ul class="uk-nav uk-nav-default">
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "uk-active" : "")">@Html.ActionLink("Головна", "Index", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "uk-active" : "")">@Html.ActionLink("Про адвоката", "About", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Price" ? "uk-active" : "")">@Html.ActionLink("Ціни", "Price", "Home")</li>
+                        <li class="@(new string[] { "ConsultRules", "ConsultRequests", "Create", "UserAccount" }.Contains(ViewContext.RouteData.Values["Action"].ToString()) ? "uk-parent uk-active" : "uk-parent")">
+                            @Html.ActionLink("Консультація онлайн", "ConsultRules", "Consult")
+                            <ul class="uk-nav-sub">
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ConsultRules" ? "uk-active" : "")">@Html.ActionLink("Умови", "ConsultRules", "Consult")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ConsultRequests" ? "uk-active" : "")">@Html.ActionLink("Запити", "ConsultRequests", "Consult")</li>
+                                <li class="@(new string[] { "Create", "Edit" }.Contains(ViewContext.RouteData.Values["Action"].ToString()) ? "uk-active" : "")">@Html.ActionLink("Новий запит", "Create", "Consult")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "UserAccount" ? "uk-active" : "")">@Html.ActionLink("Обліковий запис", "UserAccount", "Consult")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br />
+                    @Html.Partial("_LoginSmallPartial")
+                </div>
+            </div>
         </div>
 
-        <div class="uk-navbar-right">
-
-            <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li>
-                    <a href="#">Parent</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Active</a></li>
-                            <li><a href="#">Item</a></li>
-                            <li><a href="#">Item</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href="#">Item</a></li>
-            </ul>
-
-        </div>
-
-    </nav>
-
-    <div class="uk-container uk-container-large">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    <div id="body">
+
+        @RenderBody()
+
+    </div>
+
+    <footer class="uk-container-expand" id="footer">
+        <div class="uk-container">
+            <div class="uk-align-left">&copy; @DateTime.Now.Year Сайт адвоката Федорчук О.А. - всі права застережено.</div>
+            <div class="uk-align-right">т. +38 093 513 49 04</div>
+        </div>
+    </footer>
+    <div class="uk-clearfix"></div>
+
+    <script>
+
+        setDivHeight("body", "header", "footer");
+
+        $(window).resize(function () {
+            setDivHeight("body", "header", "footer");
+        });
+
+        function setDivHeight(divIdToChange, headerDivId, footerDivId) {
+            var divHeight = window.innerHeight - document.getElementById(headerDivId).offsetHeight - document.getElementById(footerDivId).offsetHeight;
+            document.getElementById(divIdToChange).style.minHeight = divHeight + "px";
+        }
+
+    </script>
+
+    @Scripts.Render("~/bundles/respond")
     @Scripts.Render("~/bundles/uikit")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

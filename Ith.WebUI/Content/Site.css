@@ -1,28 +1,173 @@
-﻿body {
-    padding-top: 0;
-    padding-bottom: 20px;
+﻿@media screen and (max-width: 992px) {
+
+    #menu-full {
+        display: none;
+    }
+
+    #menu-mobile {
+        display: flex;
+    }
+
+    .uk-navbar-left .uk-logo {
+        display: none;
+    }
 }
 
-/* Set padding to keep content from hitting the edges */
+@media screen and (max-width: 1200px) {
+
+    .uk-navbar-left .uk-logo {
+        display: none;
+    }
+}
+
+@media screen and (min-width:993px) {
+
+    #menu-full {
+        display: flex;
+    }
+
+    #menu-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 0) and (max-width: 480px) {
+
+    .logo-first-word {
+        display: none;
+    }
+}
+
+@media (min-width: 0) and (max-width: 767px) {
+
+    .consult-menu-text {
+        display: none;
+    }
+}
+
+.main-container {
+    padding: 30px 10px 60px 10px;
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.consult-dropdown {
+    margin-top: 0;
+    background: #0a161f;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    .consult-dropdown > ul > li > a {
+        color: #fff;
+    }
+
+#menu-mobile, .header {
+    z-index: 2;
+    background: #E0EAFC; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+#menu-full {
+    background: none;
+}
+
+#menu-full .uk-open {
+    color: #e8f0f6;
+    /*text-decoration: underline;*/
+}
+
+.uk-navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.uk-navbar-nav > li.uk-active > a,
+.uk-navbar-dropdown-nav > li.uk-active > a {
+    color: #e8f0f6;
+    cursor: default;
+    text-decoration: underline;
+}
+
+.uk-navbar-nav > li.uk-active > a:hover,
+.uk-navbar-dropdown-nav > li.uk-active > a:hover {
+    text-decoration: none;
+}
+
+.uk-navbar-nav > li > a:hover,
+.uk-navbar-dropdown-nav > li > a:hover {
+    color: #e8f0f6;
+}
+
+.uk-offcanvas-bar .uk-nav-default .uk-nav-sub > li.uk-active > a,
+.uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
+    color: #fff;
+    cursor: default;
+}
+
+#menu-full .uk-navbar-dropdown {
+    padding: 12px;
+}
+
+.uk-offcanvas-bar {
+    background: #0a161f;
+}
+
+
+.header {
+    /*-webkit-box-shadow: 0 3px 6px -6px black;
+	   -moz-box-shadow: 0 3px 6px -6px black;
+	        box-shadow: 0 3px 6px -6px black;*/
+    z-index: 1000;
+    margin-bottom: 0px;
+}
+
+body {
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
 
 .uk-container {
     padding-top: 26px;
+}
+
+.main-container {
+    padding: 30px 10px 60px 10px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-block {
+    max-width: 1200px;
+    margin-bottom: 0;
+}
+
+#header .uk-navbar-nav > li > a {
+    height: 80px;
+}
+
+.uk-logo {
+    font-size: 1.1rem;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: 100;
+}
+
+.uk-logo:focus, .uk-logo:hover {
+    color: #fff;
+}
+
+.logo-first-word {
+    font-weight: bold;
+    color: #ff6a00;
+}
+
+h2 {
+    color: #ff0000;
+    font-size: 50px;
 }

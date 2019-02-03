@@ -1,4 +1,5 @@
-﻿using Ith.WebUI.Util;
+﻿using Ith.WebUI.App_Start;
+using Ith.WebUI.Util;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Mvc;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Ith.WebUI
@@ -17,6 +19,7 @@ namespace Ith.WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // внедрение зависимостей
             NinjectModule registrations = new NinjectRegistrations();

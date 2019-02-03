@@ -5,7 +5,7 @@ namespace Ith.Domain.Concrete
 {
     class PostDbContext : DbContext
     {
-        public PostDbContext() : base("name=PostDbContext") { }
+        public PostDbContext() : base("name=DefaultDbContext") { }
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Subject> Subjects { get; set; }
